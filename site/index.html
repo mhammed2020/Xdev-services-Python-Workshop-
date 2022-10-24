@@ -299,6 +299,7 @@
 <li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
 <li><code>mkdocs build</code> - Build the documentation site.</li>
 <li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li><code>mkdocs -dg</code> - Help me help message and exit.</li>
 </ul>
 <h2 id="project-layout">Project layout</h2>
 <pre><code>mkdocs.yml    # The configuration file.
@@ -306,6 +307,104 @@ docs/
     index.md  # The documentation homepage.
     ...       # Other markdown pages, images and other files.
 </code></pre>
+<h1 id="_1"><img src="https://raw.githubusercontent.com/ProjectPythiaCookbooks/radar-cookbook/main/thumbnail.png" width=500 alt="ARM Logo"></img></h1>
+<h1 id="py-art-basics">Py-ART Basics</h1>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>Within this notebook, we will cover:</p>
+<ol>
+<li>General overview of Py-ART and its functionality</li>
+<li>Reading data using Py-ART</li>
+<li>An overview of the <code>pyart.Radar</code> object</li>
+<li>Create a Plot of our Radar Data</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<table>
+<thead>
+<tr>
+<th>Concepts</th>
+<th>Importance</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://foundations.projectpythia.org/core/cartopy/cartopy.html">Intro to Cartopy</a></td>
+<td>Helpful</td>
+<td>Basic features</td>
+</tr>
+<tr>
+<td><a href="https://foundations.projectpythia.org/core/matplotlib/matplotlib-basics.html">Matplotlib Basics</a></td>
+<td>Helpful</td>
+<td>Basic plotting</td>
+</tr>
+<tr>
+<td><a href="https://foundations.projectpythia.org/core/numpy/numpy-basics.html">NumPy Basics</a></td>
+<td>Helpful</td>
+<td>Basic arrays</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="imports">Imports</h2>
+<pre><code class="language-python"># import os
+import warnings
+
+import cartopy.crs as ccrs
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+import pyart
+
+warnings.filterwarnings('ignore')
+</code></pre>
+<h2 id="an-overview-of-py-art">An Overview of Py-ART</h2>
+<h3 id="history-of-the-py-art">History of the Py-ART</h3>
+<ul>
+<li>Development began to address the needs of ARM with the acquisition of a number of
+   new scanning cloud and precipitation radar as part of the American Recovery Act.</li>
+<li>The project has since expanded to work with a variety of weather radars and a wider user
+   base including radar researchers and climate modelers.</li>
+<li>The software has been released on GitHub as open source software under a BSD license.
+   Runs on Linux, OS X. It also runs on Windows with more limited functionality.</li>
+</ul>
+<h3 id="what-can-pyart-do">What can PyART Do?</h3>
+<p>Py-ART can be used for a variety of tasks from basic plotting to more complex
+processing pipelines. Specific uses for Py-ART include:</p>
+<ul>
+<li>Reading radar data in a variety of file formats.</li>
+<li>Creating plots and visualization of radar data.</li>
+<li>Correcting radar moments while in antenna coordinates, such as:<ul>
+<li>Doppler unfolding/de-aliasing.</li>
+<li>Attenuation correction.</li>
+<li>Phase processing using a Linear Programming method.</li>
+</ul>
+</li>
+<li>Mapping data from one or multiple radars onto a Cartesian grid.</li>
+<li>Performing retrievals.</li>
+<li>Writing radial and Cartesian data to NetCDF files.</li>
+</ul>
+<h2 id="reading-in-data-using-py-art">Reading in Data Using Py-ART</h2>
+<p>When reading in a radar file, we use the <code>pyart.io.read</code> module.</p>
+<p><code>pyart.io.read</code> can read a variety of different radar formats, such as Cf/Radial, LASSEN, and more. 
+The documentation on what formats can be read by Py-ART can be found here:</p>
+<ul>
+<li><a href="https://arm-doe.github.io/pyart/API/generated/pyart.io.html">Py-ART IO Documentation</a></li>
+</ul>
+<p>For most file formats listed on the page, using <code>pyart.io.read</code> should suffice since Py-ART has the ability to automatically detect the file format.</p>
+<p>Let's check out what arguments arguments <code>pyart.io.read()</code> takes in!</p>
+<pre><code class="language-python">pyart.io.read?
+</code></pre>
+<pre><code class="language-python">Let's use a sample data file from `pyart` - which is [**cfradial** format](https://github.com/NCAR/CfRadial).
+
+When we read this in, we get a [`pyart.Radar` object](https://arm-doe.github.io/pyart/API/generated/pyart.core.Radar.html#pyart.core.Radar)!
+</code></pre>
+<pre><code class="language-python">file = '../data/sample_sail_ppi.nc'
+radar = pyart.io.read(file)
+radar
+</code></pre>
+<h3 id="investigate-the-pyartradar-object">Investigate the <a href="https://arm-doe.github.io/pyart/API/generated/pyart.core.Radar.html#pyart.core.Radar"><code>pyart.Radar</code> object</a></h3>
 
 
 
