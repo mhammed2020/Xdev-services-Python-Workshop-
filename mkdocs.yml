@@ -1,4 +1,50 @@
-site_name: My Docs
+site_name: Xdev services | Python Workshop 
+
+nav:
+
+    - Python Radar Toolkit : index.md
+
+    - Data Analysis : 
+        - Pandas: pandas.md
+        - Numpy: numpy.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  - toc:
+      title: Table des matières
+
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
+  - javascripts/tablesort.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 
 theme:
-  name: material
+    name: material
+    custom_dir: overrides
+    palette:
+        primary: pink
+    logo: assets/logos.png
+ 
