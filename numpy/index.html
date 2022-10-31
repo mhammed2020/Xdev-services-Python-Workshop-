@@ -1,0 +1,1905 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
+    
+    
+      
+        <title>Numpy - Xdev services | Python Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#e92063">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="pink" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#statistics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Xdev services | Python Workshop" class="md-header__button md-logo" aria-label="Xdev services | Python Workshop" data-md-component="logo">
+      
+  <img src="../assets/logos.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Xdev services | Python Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Numpy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Xdev services | Python Workshop" class="md-nav__button md-logo" aria-label="Xdev services | Python Workshop" data-md-component="logo">
+      
+  <img src="../assets/logos.png" alt="logo">
+
+    </a>
+    Xdev services | Python Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Python Radar Toolkit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Data Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Analysis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Numpy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Numpy
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#statistics" class="md-nav__link">
+    Statistics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistics-module" class="md-nav__link">
+    Statistics Module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numpy" class="md-nav__link">
+    NumPy
+  </a>
+  
+    <nav class="md-nav" aria-label="NumPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importing-numpy" class="md-nav__link">
+    Importing NumPy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-numpy-array-using" class="md-nav__link">
+    Creating numpy array using
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating numpy array using">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-int-numpy-arrays" class="md-nav__link">
+    Creating int numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-float-numpy-arrays" class="md-nav__link">
+    Creating float numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-boolean-numpy-arrays" class="md-nav__link">
+    Creating boolean numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-multidimensional-array-using-numpy" class="md-nav__link">
+    Creating multidimensional array using numpy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-numpy-array-to-list" class="md-nav__link">
+    Converting numpy array to list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-numpy-array-from-tuple" class="md-nav__link">
+    Creating numpy array from tuple
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shape-of-numpy-array" class="md-nav__link">
+    Shape of numpy array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-type-of-numpy-array" class="md-nav__link">
+    Data type of numpy array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#size-of-a-numpy-array" class="md-nav__link">
+    Size of a numpy array
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-operation-using-numpy" class="md-nav__link">
+    Mathematical Operation using numpy
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Operation using numpy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition" class="md-nav__link">
+    Addition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtraction" class="md-nav__link">
+    Subtraction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplication" class="md-nav__link">
+    Multiplication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#division" class="md-nav__link">
+    Division
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modulus" class="md-nav__link">
+    Modulus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor-division" class="md-nav__link">
+    Floor Division
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponential" class="md-nav__link">
+    Exponential
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-data-types" class="md-nav__link">
+    Checking data types
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking data types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-types" class="md-nav__link">
+    Converting types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimensional-arrays" class="md-nav__link">
+    Multi-dimensional Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-dimensional Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-items-from-a-numpy-array" class="md-nav__link">
+    Getting items from a numpy array
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slicing-numpy-array" class="md-nav__link">
+    Slicing Numpy array
+  </a>
+  
+    <nav class="md-nav" aria-label="Slicing Numpy array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-reverse-the-rows-and-the-whole-array" class="md-nav__link">
+    How to reverse the rows and the whole array?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse-the-row-and-column-positions" class="md-nav__link">
+    Reverse the row and column positions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-represent-missing-values" class="md-nav__link">
+    How to represent missing values ?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to represent missing values ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-random-numbers" class="md-nav__link">
+    Generating Random Numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generationg-random-numbers" class="md-nav__link">
+    Generationg random numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numpy-and-statistics" class="md-nav__link">
+    Numpy and Statistics
+  </a>
+  
+    <nav class="md-nav" aria-label="Numpy and Statistics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matrix-in-numpy" class="md-nav__link">
+    Matrix in numpy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numpy-numpyarange" class="md-nav__link">
+    Numpy numpy.arange()
+  </a>
+  
+    <nav class="md-nav" aria-label="Numpy numpy.arange()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-arrange" class="md-nav__link">
+    What is Arrange?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-sequence-of-numbers-using-linspace" class="md-nav__link">
+    Creating sequence of numbers using linspace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numpy-statistical-functions-with-example" class="md-nav__link">
+    NumPy Statistical Functions with Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-create-repeating-sequences" class="md-nav__link">
+    How to create repeating sequences?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-random-numbers" class="md-nav__link">
+    How to generate random numbers?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-algebra" class="md-nav__link">
+    Linear Algebra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numpy-matrix-multiplication-with-npmatmul" class="md-nav__link">
+    NumPy Matrix Multiplication with np.matmul()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#statistics" class="md-nav__link">
+    Statistics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistics-module" class="md-nav__link">
+    Statistics Module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numpy" class="md-nav__link">
+    NumPy
+  </a>
+  
+    <nav class="md-nav" aria-label="NumPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importing-numpy" class="md-nav__link">
+    Importing NumPy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-numpy-array-using" class="md-nav__link">
+    Creating numpy array using
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating numpy array using">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-int-numpy-arrays" class="md-nav__link">
+    Creating int numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-float-numpy-arrays" class="md-nav__link">
+    Creating float numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-boolean-numpy-arrays" class="md-nav__link">
+    Creating boolean numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-multidimensional-array-using-numpy" class="md-nav__link">
+    Creating multidimensional array using numpy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#converting-numpy-array-to-list" class="md-nav__link">
+    Converting numpy array to list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-numpy-array-from-tuple" class="md-nav__link">
+    Creating numpy array from tuple
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shape-of-numpy-array" class="md-nav__link">
+    Shape of numpy array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-type-of-numpy-array" class="md-nav__link">
+    Data type of numpy array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#size-of-a-numpy-array" class="md-nav__link">
+    Size of a numpy array
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-operation-using-numpy" class="md-nav__link">
+    Mathematical Operation using numpy
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical Operation using numpy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addition" class="md-nav__link">
+    Addition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subtraction" class="md-nav__link">
+    Subtraction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiplication" class="md-nav__link">
+    Multiplication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#division" class="md-nav__link">
+    Division
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modulus" class="md-nav__link">
+    Modulus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floor-division" class="md-nav__link">
+    Floor Division
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponential" class="md-nav__link">
+    Exponential
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-data-types" class="md-nav__link">
+    Checking data types
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking data types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-types" class="md-nav__link">
+    Converting types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimensional-arrays" class="md-nav__link">
+    Multi-dimensional Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-dimensional Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-items-from-a-numpy-array" class="md-nav__link">
+    Getting items from a numpy array
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slicing-numpy-array" class="md-nav__link">
+    Slicing Numpy array
+  </a>
+  
+    <nav class="md-nav" aria-label="Slicing Numpy array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-reverse-the-rows-and-the-whole-array" class="md-nav__link">
+    How to reverse the rows and the whole array?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse-the-row-and-column-positions" class="md-nav__link">
+    Reverse the row and column positions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-represent-missing-values" class="md-nav__link">
+    How to represent missing values ?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to represent missing values ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-random-numbers" class="md-nav__link">
+    Generating Random Numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generationg-random-numbers" class="md-nav__link">
+    Generationg random numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numpy-and-statistics" class="md-nav__link">
+    Numpy and Statistics
+  </a>
+  
+    <nav class="md-nav" aria-label="Numpy and Statistics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matrix-in-numpy" class="md-nav__link">
+    Matrix in numpy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numpy-numpyarange" class="md-nav__link">
+    Numpy numpy.arange()
+  </a>
+  
+    <nav class="md-nav" aria-label="Numpy numpy.arange()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-arrange" class="md-nav__link">
+    What is Arrange?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-sequence-of-numbers-using-linspace" class="md-nav__link">
+    Creating sequence of numbers using linspace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numpy-statistical-functions-with-example" class="md-nav__link">
+    NumPy Statistical Functions with Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-create-repeating-sequences" class="md-nav__link">
+    How to create repeating sequences?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-random-numbers" class="md-nav__link">
+    How to generate random numbers?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linear-algebra" class="md-nav__link">
+    Linear Algebra
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numpy-matrix-multiplication-with-npmatmul" class="md-nav__link">
+    NumPy Matrix Multiplication with np.matmul()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h2 id="statistics">Statistics</h2>
+<p>Statistics is the discipline that studies the <em>collection</em>, <em>organization</em>, <em>displaying</em>, <em>analysis</em>, <em>interpretation</em> and <em>presentation</em> of data.
+Statistics is a branch of mathematics that is recommended to be a prerequisite for data science and machine learning. Statistics is a very broad field but we will focus in this section only on the most relevant part.
+After completing this challenge, you may go to web development, data analysis, machine learning and data science path. Whatever path you may follow, at some point in your career you will get data which you may work on. Having some statistical knowledge will help you to make decision based on data, <em>data tells as they say</em>.</p>
+<h2 id="data">Data</h2>
+<p>What is data? Data is any set of characters that is gathered and translated for some purpose, usually analysis. It can be any character, including text and numbers, pictures, sound, or video. If data is not put into context, it doesn't give any sense to a human or computer. To make sense from data we need to work on the data using different tools.</p>
+<p>The work flow of data analysis, data science or machine learning starts from data. Data can be provided from some data source or it can be created. There are structured and and unstructure data.</p>
+<p>Data can be found as small or big data format. Most of the data types we will get have been covered in the file handling section.</p>
+<h2 id="statistics-module">Statistics Module</h2>
+<p>The python <em>statistics</em> module provides functions for calculating mathematical statistics of numeric data. The module is not intended to be a competitor to third-party libraries such as NumPy, SciPy, or proprietary full-featured statistics packages aimed at professional statisticians such as Minitab, SAS and Matlab. It is aimed at the level of graphing and scientific calculators.</p>
+<h1 id="numpy">NumPy</h1>
+<p>In the first section we defined python as a great general-purpose programming language on its own, but with the help of other popular libraries (numpy, scipy, matplotlib, pandas etc) it becomes a powerful environment for scientific computing.</p>
+<p>Numpy is the core library for scientific computing in Python. It provides a high-performance multidimensional array object, and tools for working with arrays.</p>
+<p>So far, we have been using vscode but from now on I would recommend using Jupyter Notebook. To access jupter notebook let's install <a href="https://www.anaconda.com/">anaconda</a>. If you are using anaconda most of the common packages are included and you don't have install packages if you installed anaconda.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>asabeneh@Asabeneh:~/Desktop/30DaysOfPython$ pip install numpy
+</code></pre></div>
+<h2 id="importing-numpy">Importing NumPy</h2>
+<p>Jupyter notebook is available if your are in favor of <a href="https://github.com/Asabeneh/data-science-for-everyone/blob/master/numpy/numpy.ipynb">jupyter notebook</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    <span class="c1"># How to import numpy</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="c1"># How to check the version of the numpy package</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;numpy:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="c1"># Checking the available methods</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">np</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="creating-numpy-array-using">Creating numpy array using</h2>
+<h3 id="creating-int-numpy-arrays">Creating int numpy arrays</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    <span class="c1"># Creating python List</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">python_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="c1"># Checking data types</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Type:&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="p">(</span><span class="n">python_list</span><span class="p">))</span> <span class="c1"># &lt;class &#39;list&#39;&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="c1">#</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">python_list</span><span class="p">)</span> <span class="c1"># [1, 2, 3, 4, 5]</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">two_dimensional_list</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">two_dimensional_list</span><span class="p">)</span>  <span class="c1"># [[0, 1, 2], [3, 4, 5], [6, 7, 8]]</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="c1"># Creating Numpy(Numerical Python) array from python list</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">python_list</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span> <span class="p">(</span><span class="n">numpy_array_from_list</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;numpy.ndarray&#39;&gt;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">numpy_array_from_list</span><span class="p">)</span> <span class="c1"># array([1, 2, 3, 4, 5])</span>
+</code></pre></div>
+<h3 id="creating-float-numpy-arrays">Creating float numpy arrays</h3>
+<p>Creating a float numpy array from list with a float data type parameter</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>    <span class="c1"># Python list</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">python_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">numy_array_from_list2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">python_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">numy_array_from_list2</span><span class="p">)</span> <span class="c1"># array([1., 2., 3., 4., 5.])</span>
+</code></pre></div>
+<h3 id="creating-boolean-numpy-arrays">Creating boolean numpy arrays</h3>
+<p>Creating a boolean a numpy array from list</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>    <span class="n">numpy_bool_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">numpy_bool_array</span><span class="p">)</span> <span class="c1"># array([False,  True,  True, False, False])</span>
+</code></pre></div>
+<h3 id="creating-multidimensional-array-using-numpy">Creating multidimensional array using numpy</h3>
+<p>A numpy array may have one or multiple rows and columns</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>    <span class="n">two_dimensional_list</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">numpy_two_dimensional_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">two_dimensional_list</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span> <span class="p">(</span><span class="n">numpy_two_dimensional_list</span><span class="p">))</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">numpy_two_dimensional_list</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>    &lt;class <span class="s1">&#39;numpy.ndarray&#39;</span>&gt;
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="o">[[</span><span class="m">0</span> <span class="m">1</span> <span class="m">2</span><span class="o">]</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>     <span class="o">[</span><span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>     <span class="o">[</span><span class="m">6</span> <span class="m">7</span> <span class="m">8</span><span class="o">]]</span>
+</code></pre></div>
+<h3 id="converting-numpy-array-to-list">Converting numpy array to list</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># We can always convert an array back to a python list using tolist().</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">np_to_list</span> <span class="o">=</span> <span class="n">numpy_array_from_list</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span> <span class="p">(</span><span class="n">np_to_list</span><span class="p">))</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;one dimensional array:&#39;</span><span class="p">,</span> <span class="n">np_to_list</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;two dimensional array: &#39;</span><span class="p">,</span> <span class="n">numpy_two_dimensional_list</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>    &lt;class <span class="s1">&#39;list&#39;</span>&gt;
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    one dimensional array: <span class="o">[</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    two dimensional array:  <span class="o">[[</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">2</span><span class="o">]</span>, <span class="o">[</span><span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span><span class="o">]</span>, <span class="o">[</span><span class="m">6</span>, <span class="m">7</span>, <span class="m">8</span><span class="o">]]</span>
+</code></pre></div>
+<h3 id="creating-numpy-array-from-tuple">Creating numpy array from tuple</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Numpy array from tuple</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># Creating tuple in Python</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">python_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span> <span class="p">(</span><span class="n">python_tuple</span><span class="p">))</span> <span class="c1"># &lt;class &#39;tuple&#39;&gt;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;python_tuple: &#39;</span><span class="p">,</span> <span class="n">python_tuple</span><span class="p">)</span> <span class="c1"># python_tuple:  (1, 2, 3, 4, 5)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">numpy_array_from_tuple</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">python_tuple</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span> <span class="p">(</span><span class="n">numpy_array_from_tuple</span><span class="p">))</span> <span class="c1"># &lt;class &#39;numpy.ndarray&#39;&gt;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;numpy_array_from_tuple: &#39;</span><span class="p">,</span> <span class="n">numpy_array_from_tuple</span><span class="p">)</span> <span class="c1"># numpy_array_from_tuple:  [1 2 3 4 5]</span>
+</code></pre></div>
+<h3 id="shape-of-numpy-array">Shape of numpy array</h3>
+<p>The shape method provide the shape of the array as a tuple. The first is the row and the second is the column. If the array is just one dimensional it returns the size of the array.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>    <span class="n">nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of nums: &#39;</span><span class="p">,</span> <span class="n">nums</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">numpy_two_dimensional_list</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of numpy_two_dimensional_list: &#39;</span><span class="p">,</span> <span class="n">numpy_two_dimensional_list</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">three_by_four_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>        <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">three_by_four_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>    <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    shape of nums:  <span class="o">(</span><span class="m">5</span>,<span class="o">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="o">[[</span><span class="m">0</span> <span class="m">1</span> <span class="m">2</span><span class="o">]</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>     <span class="o">[</span><span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>     <span class="o">[</span><span class="m">6</span> <span class="m">7</span> <span class="m">8</span><span class="o">]]</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    shape of numpy_two_dimensional_list:  <span class="o">(</span><span class="m">3</span>, <span class="m">3</span><span class="o">)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="o">(</span><span class="m">3</span>, <span class="m">4</span><span class="o">)</span>
+</code></pre></div>
+<h3 id="data-type-of-numpy-array">Data type of numpy array</h3>
+<p>Type of data types: str, int, float, complex, bool, list, None</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">int_lists</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">int_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">int_lists</span><span class="p">)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">float_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">int_lists</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">int_array</span><span class="p">)</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">int_array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">float_array</span><span class="p">)</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">float_array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>    <span class="o">[</span>-3 -2 -1  <span class="m">0</span>  <span class="m">1</span>  <span class="m">2</span>  <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    int64
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="o">[</span>-3. -2. -1.  <span class="m">0</span>.  <span class="m">1</span>.  <span class="m">2</span>.  <span class="m">3</span>.<span class="o">]</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    float64
+</code></pre></div>
+<h3 id="size-of-a-numpy-array">Size of a numpy array</h3>
+<p>In numpy to know the number of items in a numpy array list we use size</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">two_dimensional_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>                              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>                              <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The size:&#39;</span><span class="p">,</span> <span class="n">numpy_array_from_list</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="c1"># 5</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The size:&#39;</span><span class="p">,</span> <span class="n">two_dimensional_list</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>  <span class="c1"># 3</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>    The size: <span class="m">5</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    The size: <span class="m">9</span>
+</code></pre></div>
+<h2 id="mathematical-operation-using-numpy">Mathematical Operation using numpy</h2>
+<p>Numpy array is not like exactly like python list. To do mathematical operation in pyhton list we have to loop through the items but numpy can allow to do any mathematical operation without looping.
+Mathematical Operation:</p>
+<ul>
+<li>Addition (+)</li>
+<li>Subtraction (-)</li>
+<li>Multiplication (*)</li>
+<li>Division (/)</li>
+<li>Modules (%)</li>
+<li>Floor Division(//)</li>
+<li>Exponential(**)</li>
+</ul>
+<h3 id="addition">Addition</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Mathematical Operation</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># Addition</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array: &#39;</span><span class="p">,</span> <span class="n">numpy_array_from_list</span><span class="p">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">ten_plus_original</span> <span class="o">=</span> <span class="n">numpy_array_from_list</span>  <span class="o">+</span> <span class="mi">10</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">ten_plus_original</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>    original array:  <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="o">[</span><span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="subtraction">Subtraction</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Subtraction</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array: &#39;</span><span class="p">,</span> <span class="n">numpy_array_from_list</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">ten_minus_original</span> <span class="o">=</span> <span class="n">numpy_array_from_list</span>  <span class="o">-</span> <span class="mi">10</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">ten_minus_original</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>    original array:  <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="o">[</span>-9 -8 -7 -6 -5<span class="o">]</span>
+</code></pre></div>
+<h3 id="multiplication">Multiplication</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Multiplication</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array: &#39;</span><span class="p">,</span> <span class="n">numpy_array_from_list</span><span class="p">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">ten_times_original</span> <span class="o">=</span> <span class="n">numpy_array_from_list</span> <span class="o">*</span> <span class="mi">10</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">ten_times_original</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>    original array:  <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="o">[</span><span class="m">10</span> <span class="m">20</span> <span class="m">30</span> <span class="m">40</span> <span class="m">50</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="division">Division</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Division</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array: &#39;</span><span class="p">,</span> <span class="n">numpy_array_from_list</span><span class="p">)</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">ten_times_original</span> <span class="o">=</span> <span class="n">numpy_array_from_list</span> <span class="o">/</span> <span class="mi">10</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">ten_times_original</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>    original array:  <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="o">[</span><span class="m">0</span>.1 <span class="m">0</span>.2 <span class="m">0</span>.3 <span class="m">0</span>.4 <span class="m">0</span>.5<span class="o">]</span>
+</code></pre></div>
+<h3 id="modulus">Modulus</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Modulus; Finding the remainder</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array: &#39;</span><span class="p">,</span> <span class="n">numpy_array_from_list</span><span class="p">)</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">ten_times_original</span> <span class="o">=</span> <span class="n">numpy_array_from_list</span> <span class="o">%</span> <span class="mi">3</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">ten_times_original</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>    original array:  <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>    <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">0</span> <span class="m">1</span> <span class="m">2</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="floor-division">Floor Division</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Floor division: the division result without the remainder</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array: &#39;</span><span class="p">,</span> <span class="n">numpy_array_from_list</span><span class="p">)</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">ten_times_original</span> <span class="o">=</span> <span class="n">numpy_array_from_list</span> <span class="o">//</span> <span class="mi">10</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">ten_times_original</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="exponential">Exponential</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Exponential is finding some number the power of another:</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">numpy_array_from_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original array: &#39;</span><span class="p">,</span> <span class="n">numpy_array_from_list</span><span class="p">)</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="n">ten_times_original</span> <span class="o">=</span> <span class="n">numpy_array_from_list</span>  <span class="o">**</span> <span class="mi">2</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">ten_times_original</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>    original array:  <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="o">[</span> <span class="m">1</span>  <span class="m">4</span>  <span class="m">9</span> <span class="m">16</span> <span class="m">25</span><span class="o">]</span>
+</code></pre></div>
+<h2 id="checking-data-types">Checking data types</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1">#Int,  Float numbers</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">numpy_int_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">numpy_float_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span><span class="mf">3.2</span><span class="p">])</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">numpy_bool_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;bool&#39;</span><span class="p">)</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">numpy_int_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">numpy_float_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">numpy_bool_arr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>    int64
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    float64
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    bool
+</code></pre></div>
+<h3 id="converting-types">Converting types</h3>
+<p>We can convert the data types of numpy array</p>
+<ol>
+<li>Int to Float</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">numpy_int_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">numpy_int_arr</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([1., 2., 3., 4.])
+</code></pre></div>
+<ol>
+<li>Float to Int</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">numpy_int_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="n">numpy_int_arr</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>    array<span class="o">([</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span><span class="o">])</span>
+</code></pre></div>
+<ol>
+<li>Int ot boolean</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;bool&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>    array<span class="o">([</span> True,  True, False,  True,  True,  True<span class="o">])</span>
+</code></pre></div>
+<ol>
+<li>Int to str</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">numpy_float_list</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>    array<span class="o">([</span><span class="s1">&#39;1&#39;</span>, <span class="s1">&#39;2&#39;</span>, <span class="s1">&#39;3&#39;</span><span class="o">]</span>, <span class="nv">dtype</span><span class="o">=</span><span class="s1">&#39;&lt;U21&#39;</span><span class="o">)</span>
+</code></pre></div>
+<h2 id="multi-dimensional-arrays">Multi-dimensional Arrays</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># 2 Dimension Array</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">two_dimension_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">)])</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span> <span class="p">(</span><span class="n">two_dimension_array</span><span class="p">))</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">)</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape: &#39;</span><span class="p">,</span> <span class="n">two_dimension_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Size:&#39;</span><span class="p">,</span> <span class="n">two_dimension_array</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data type:&#39;</span><span class="p">,</span> <span class="n">two_dimension_array</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>    &lt;class <span class="s1">&#39;numpy.ndarray&#39;</span>&gt;
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="o">[[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>     <span class="o">[</span><span class="m">4</span> <span class="m">5</span> <span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>     <span class="o">[</span><span class="m">7</span> <span class="m">8</span> <span class="m">9</span><span class="o">]]</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>    Shape:  <span class="o">(</span><span class="m">3</span>, <span class="m">3</span><span class="o">)</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>    Size: <span class="m">9</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>    Data type: int64
+</code></pre></div>
+<h3 id="getting-items-from-a-numpy-array">Getting items from a numpy array</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># 2 Dimension Array</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="n">two_dimension_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="n">first_row</span> <span class="o">=</span> <span class="n">two_dimension_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="n">second_row</span> <span class="o">=</span> <span class="n">two_dimension_array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="n">third_row</span> <span class="o">=</span> <span class="n">two_dimension_array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First row:&#39;</span><span class="p">,</span> <span class="n">first_row</span><span class="p">)</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Second row:&#39;</span><span class="p">,</span> <span class="n">second_row</span><span class="p">)</span>
+<a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Third row: &#39;</span><span class="p">,</span> <span class="n">third_row</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>    First row: <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>    Second row: <span class="o">[</span><span class="m">4</span> <span class="m">5</span> <span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    Third row:  <span class="o">[</span><span class="m">7</span> <span class="m">8</span> <span class="m">9</span><span class="o">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">first_column</span><span class="o">=</span> <span class="n">two_dimension_array</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="n">second_column</span> <span class="o">=</span> <span class="n">two_dimension_array</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="n">third_column</span> <span class="o">=</span> <span class="n">two_dimension_array</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First column:&#39;</span><span class="p">,</span> <span class="n">first_column</span><span class="p">)</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Second column:&#39;</span><span class="p">,</span> <span class="n">second_column</span><span class="p">)</span>
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Third column: &#39;</span><span class="p">,</span> <span class="n">third_column</span><span class="p">)</span>
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>    First column: <span class="o">[</span><span class="m">1</span> <span class="m">4</span> <span class="m">7</span><span class="o">]</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    Second column: <span class="o">[</span><span class="m">2</span> <span class="m">5</span> <span class="m">8</span><span class="o">]</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>    Third column:  <span class="o">[</span><span class="m">3</span> <span class="m">6</span> <span class="m">9</span><span class="o">]</span>
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>    <span class="o">[[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>     <span class="o">[</span><span class="m">4</span> <span class="m">5</span> <span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>     <span class="o">[</span><span class="m">7</span> <span class="m">8</span> <span class="m">9</span><span class="o">]]</span>
+</code></pre></div>
+<h2 id="slicing-numpy-array">Slicing Numpy array</h2>
+<p>Slicing in numpy is similar to slicing in python list</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">two_dimension_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="n">first_two_rows_and_columns</span> <span class="o">=</span> <span class="n">two_dimension_array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">first_two_rows_and_columns</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>    <span class="o">[[</span><span class="m">1</span> <span class="m">2</span><span class="o">]</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>     <span class="o">[</span><span class="m">4</span> <span class="m">5</span><span class="o">]]</span>
+</code></pre></div>
+<h3 id="how-to-reverse-the-rows-and-the-whole-array">How to reverse the rows and the whole array?</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">two_dimension_array</span><span class="p">[::]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>    array<span class="o">([[</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">]</span>,
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>           <span class="o">[</span><span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span><span class="o">]</span>,
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>           <span class="o">[</span><span class="m">7</span>, <span class="m">8</span>, <span class="m">9</span><span class="o">]])</span>
+</code></pre></div>
+<h3 id="reverse-the-row-and-column-positions">Reverse the row and column positions</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>    <span class="n">two_dimension_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>    <span class="n">two_dimension_array</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>    array<span class="o">([[</span><span class="m">9</span>, <span class="m">8</span>, <span class="m">7</span><span class="o">]</span>,
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>           <span class="o">[</span><span class="m">6</span>, <span class="m">5</span>, <span class="m">4</span><span class="o">]</span>,
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>           <span class="o">[</span><span class="m">3</span>, <span class="m">2</span>, <span class="m">1</span><span class="o">]])</span>
+</code></pre></div>
+<h2 id="how-to-represent-missing-values">How to represent missing values ?</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">)</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>    <span class="n">two_dimension_array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">55</span>
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>    <span class="n">two_dimension_array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span><span class="mi">44</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>    <span class="o">[[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>     <span class="o">[</span><span class="m">4</span> <span class="m">5</span> <span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>     <span class="o">[</span><span class="m">7</span> <span class="m">8</span> <span class="m">9</span><span class="o">]]</span>
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>    <span class="o">[[</span> <span class="m">1</span>  <span class="m">2</span>  <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>     <span class="o">[</span> <span class="m">4</span> <span class="m">55</span> <span class="m">44</span><span class="o">]</span>
+<a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a>     <span class="o">[</span> <span class="m">7</span>  <span class="m">8</span>  <span class="m">9</span><span class="o">]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>    <span class="c1"># Numpy Zeroes</span>
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>    <span class="c1"># numpy.zeros(shape, dtype=float, order=&#39;C&#39;)</span>
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>    <span class="n">numpy_zeroes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a>    <span class="n">numpy_zeroes</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>    array<span class="o">([[</span><span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span><span class="o">]</span>,
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>           <span class="o">[</span><span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span><span class="o">]</span>,
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>           <span class="o">[</span><span class="m">0</span>, <span class="m">0</span>, <span class="m">0</span><span class="o">]])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="c1"># Numpy Zeroes</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="n">numpy_ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">numpy_ones</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>    <span class="o">[[</span><span class="m">1</span> <span class="m">1</span> <span class="m">1</span><span class="o">]</span>
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>     <span class="o">[</span><span class="m">1</span> <span class="m">1</span> <span class="m">1</span><span class="o">]</span>
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>     <span class="o">[</span><span class="m">1</span> <span class="m">1</span> <span class="m">1</span><span class="o">]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="n">twoes</span> <span class="o">=</span> <span class="n">numpy_ones</span> <span class="o">*</span> <span class="mi">2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="c1"># Reshape</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="c1"># numpy.reshape(), numpy.flatten()</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="n">first_shape</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
+<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">first_shape</span><span class="p">)</span>
+<a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="n">reshaped</span> <span class="o">=</span> <span class="n">first_shape</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">reshaped</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>    <span class="o">[[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>     <span class="o">[</span><span class="m">4</span> <span class="m">5</span> <span class="m">6</span><span class="o">]]</span>
+<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>    <span class="o">[[</span><span class="m">1</span> <span class="m">2</span><span class="o">]</span>
+<a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>     <span class="o">[</span><span class="m">3</span> <span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>     <span class="o">[</span><span class="m">5</span> <span class="m">6</span><span class="o">]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="n">flattened</span> <span class="o">=</span> <span class="n">reshaped</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a><span class="n">flattened</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>    array<span class="o">([</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span><span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>    <span class="c1">## Horitzontal Stack</span>
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>    <span class="n">np_list_one</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>    <span class="n">np_list_two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a>
+<a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">np_list_one</span> <span class="o">+</span> <span class="n">np_list_two</span><span class="p">)</span>
+<a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a>
+<a id="__codelineno-61-7" name="__codelineno-61-7" href="#__codelineno-61-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Horizontal Append:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np_list_one</span><span class="p">,</span> <span class="n">np_list_two</span><span class="p">)))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>    <span class="o">[</span><span class="m">5</span> <span class="m">7</span> <span class="m">9</span><span class="o">]</span>
+<a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>    Horizontal Append: <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">6</span><span class="o">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>    <span class="c1">## Vertical Stack</span>
+<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vertical Append:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">np_list_one</span><span class="p">,</span> <span class="n">np_list_two</span><span class="p">)))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>    Vertical Append: <span class="o">[[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>     <span class="o">[</span><span class="m">4</span> <span class="m">5</span> <span class="m">6</span><span class="o">]]</span>
+</code></pre></div>
+<h4 id="generating-random-numbers">Generating Random Numbers</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>    <span class="c1"># Generate a random float  number</span>
+<a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>    <span class="n">random_float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a>    <span class="n">random_float</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>    <span class="m">0</span>.018929887384753874
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>    <span class="c1"># Generate a random float  number</span>
+<a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>    <span class="n">random_floats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-67-3" name="__codelineno-67-3" href="#__codelineno-67-3"></a>    <span class="n">random_floats</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>    array<span class="o">([</span><span class="m">0</span>.26392192, <span class="m">0</span>.35842215, <span class="m">0</span>.87908478, <span class="m">0</span>.41902195, <span class="m">0</span>.78926418<span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>    <span class="c1"># Generating a random integers between 0 and 10</span>
+<a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>
+<a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>    <span class="n">random_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>    <span class="n">random_int</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>    <span class="m">4</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>    <span class="c1"># Generating a random integers between 2 and 11, and creating a one row array</span>
+<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>    <span class="n">random_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>    <span class="n">random_int</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>    array<span class="o">([</span><span class="m">8</span>, <span class="m">8</span>, <span class="m">8</span>, <span class="m">2</span><span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>    <span class="c1"># Generating a random integers between 0 and 10</span>
+<a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>    <span class="n">random_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>    <span class="n">random_int</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>    array<span class="o">([[</span><span class="m">3</span>, <span class="m">5</span>, <span class="m">3</span><span class="o">]</span>,
+<a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a>           <span class="o">[</span><span class="m">7</span>, <span class="m">3</span>, <span class="m">6</span><span class="o">]</span>,
+<a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>           <span class="o">[</span><span class="m">2</span>, <span class="m">3</span>, <span class="m">3</span><span class="o">]])</span>
+</code></pre></div>
+<h3 id="generationg-random-numbers">Generationg random numbers</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>    <span class="c1"># np.random.normal(mu, sigma, size)</span>
+<a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>    <span class="n">normal_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">79</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>    <span class="n">normal_array</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a>    array<span class="o">([</span> <span class="m">89</span>.49990595,  <span class="m">82</span>.06056961, <span class="m">107</span>.21445842,  <span class="m">38</span>.69307086,
+<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a>            <span class="m">47</span>.85259157,  <span class="m">93</span>.07381061,  <span class="m">76</span>.40724259,  <span class="m">78</span>.55675184,
+<a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a>            <span class="m">72</span>.17358173,  <span class="m">47</span>.9888899 ,  <span class="m">65</span>.10370622,  <span class="m">76</span>.29696568,
+<a id="__codelineno-76-4" name="__codelineno-76-4" href="#__codelineno-76-4"></a>            <span class="m">95</span>.58234254,  <span class="m">68</span>.14897213,  <span class="m">38</span>.75862686, <span class="m">122</span>.5587927 ,
+<a id="__codelineno-76-5" name="__codelineno-76-5" href="#__codelineno-76-5"></a>            <span class="m">67</span>.0762565 ,  <span class="m">95</span>.73990864,  <span class="m">81</span>.97454563,  <span class="m">92</span>.54264805,
+<a id="__codelineno-76-6" name="__codelineno-76-6" href="#__codelineno-76-6"></a>            <span class="m">59</span>.37035153,  <span class="m">77</span>.76828101,  <span class="m">52</span>.30752166,  <span class="m">64</span>.43109931,
+<a id="__codelineno-76-7" name="__codelineno-76-7" href="#__codelineno-76-7"></a>            <span class="m">62</span>.63695351,  <span class="m">90</span>.04616138,  <span class="m">75</span>.70009094,  <span class="m">49</span>.87586877,
+<a id="__codelineno-76-8" name="__codelineno-76-8" href="#__codelineno-76-8"></a>            <span class="m">80</span>.22002414,  <span class="m">68</span>.56708848,  <span class="m">76</span>.27791052,  <span class="m">67</span>.24343975,
+<a id="__codelineno-76-9" name="__codelineno-76-9" href="#__codelineno-76-9"></a>            <span class="m">81</span>.86363935,  <span class="m">78</span>.22703433, <span class="m">102</span>.85737041,  <span class="m">65</span>.15700341,
+<a id="__codelineno-76-10" name="__codelineno-76-10" href="#__codelineno-76-10"></a>            <span class="m">84</span>.87033426,  <span class="m">76</span>.7569997 ,  <span class="m">64</span>.61321853,  <span class="m">67</span>.37244562,
+<a id="__codelineno-76-11" name="__codelineno-76-11" href="#__codelineno-76-11"></a>            <span class="m">74</span>.4068773 ,  <span class="m">58</span>.65119655,  <span class="m">71</span>.66488727,  <span class="m">53</span>.42458179,
+<a id="__codelineno-76-12" name="__codelineno-76-12" href="#__codelineno-76-12"></a>            <span class="m">70</span>.26872028,  <span class="m">60</span>.96588544,  <span class="m">83</span>.56129414,  <span class="m">72</span>.14255326,
+<a id="__codelineno-76-13" name="__codelineno-76-13" href="#__codelineno-76-13"></a>            <span class="m">81</span>.00787609,  <span class="m">71</span>.81264853,  <span class="m">72</span>.64168853,  <span class="m">86</span>.56608717,
+<a id="__codelineno-76-14" name="__codelineno-76-14" href="#__codelineno-76-14"></a>            <span class="m">94</span>.94667321,  <span class="m">82</span>.32676973,  <span class="m">70</span>.5165446 ,  <span class="m">85</span>.43061003,
+<a id="__codelineno-76-15" name="__codelineno-76-15" href="#__codelineno-76-15"></a>            <span class="m">72</span>.45526212,  <span class="m">87</span>.34681775,  <span class="m">87</span>.69911217, <span class="m">103</span>.02831489,
+<a id="__codelineno-76-16" name="__codelineno-76-16" href="#__codelineno-76-16"></a>            <span class="m">75</span>.28598596,  <span class="m">67</span>.17806893,  <span class="m">92</span>.41274447, <span class="m">101</span>.06662611,
+<a id="__codelineno-76-17" name="__codelineno-76-17" href="#__codelineno-76-17"></a>            <span class="m">87</span>.70013935,  <span class="m">70</span>.73980645,  <span class="m">46</span>.40368207,  <span class="m">50</span>.17947092,
+<a id="__codelineno-76-18" name="__codelineno-76-18" href="#__codelineno-76-18"></a>            <span class="m">61</span>.75618542,  <span class="m">90</span>.26191397,  <span class="m">78</span>.63968639,  <span class="m">70</span>.84550744,
+<a id="__codelineno-76-19" name="__codelineno-76-19" href="#__codelineno-76-19"></a>            <span class="m">88</span>.91826581, <span class="m">103</span>.91474733,  <span class="m">66</span>.3064638 ,  <span class="m">79</span>.49726264,
+<a id="__codelineno-76-20" name="__codelineno-76-20" href="#__codelineno-76-20"></a>            <span class="m">70</span>.81087439,  <span class="m">83</span>.90130623,  <span class="m">87</span>.58555972,  <span class="m">59</span>.95462521<span class="o">])</span>
+</code></pre></div>
+<h2 id="numpy-and-statistics">Numpy and Statistics</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normal_array</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a>    <span class="o">(</span>array<span class="o">([</span><span class="m">2</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">1</span>., <span class="m">2</span>., <span class="m">2</span>., <span class="m">0</span>., <span class="m">2</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">1</span>., <span class="m">2</span>., <span class="m">2</span>., <span class="m">1</span>., <span class="m">4</span>., <span class="m">3</span>.,
+<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>            <span class="m">4</span>., <span class="m">2</span>., <span class="m">7</span>., <span class="m">2</span>., <span class="m">2</span>., <span class="m">5</span>., <span class="m">4</span>., <span class="m">2</span>., <span class="m">4</span>., <span class="m">3</span>., <span class="m">2</span>., <span class="m">1</span>., <span class="m">5</span>., <span class="m">3</span>., <span class="m">0</span>., <span class="m">3</span>., <span class="m">2</span>.,
+<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>            <span class="m">1</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">1</span>., <span class="m">3</span>., <span class="m">0</span>., <span class="m">1</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">0</span>., <span class="m">1</span>.<span class="o">])</span>,
+<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a>     array<span class="o">([</span> <span class="m">38</span>.69307086,  <span class="m">40</span>.37038529,  <span class="m">42</span>.04769973,  <span class="m">43</span>.72501417,
+<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a>             <span class="m">45</span>.4023286 ,  <span class="m">47</span>.07964304,  <span class="m">48</span>.75695748,  <span class="m">50</span>.43427191,
+<a id="__codelineno-78-6" name="__codelineno-78-6" href="#__codelineno-78-6"></a>             <span class="m">52</span>.11158635,  <span class="m">53</span>.78890079,  <span class="m">55</span>.46621523,  <span class="m">57</span>.14352966,
+<a id="__codelineno-78-7" name="__codelineno-78-7" href="#__codelineno-78-7"></a>             <span class="m">58</span>.8208441 ,  <span class="m">60</span>.49815854,  <span class="m">62</span>.17547297,  <span class="m">63</span>.85278741,
+<a id="__codelineno-78-8" name="__codelineno-78-8" href="#__codelineno-78-8"></a>             <span class="m">65</span>.53010185,  <span class="m">67</span>.20741628,  <span class="m">68</span>.88473072,  <span class="m">70</span>.56204516,
+<a id="__codelineno-78-9" name="__codelineno-78-9" href="#__codelineno-78-9"></a>             <span class="m">72</span>.23935959,  <span class="m">73</span>.91667403,  <span class="m">75</span>.59398847,  <span class="m">77</span>.27130291,
+<a id="__codelineno-78-10" name="__codelineno-78-10" href="#__codelineno-78-10"></a>             <span class="m">78</span>.94861734,  <span class="m">80</span>.62593178,  <span class="m">82</span>.30324622,  <span class="m">83</span>.98056065,
+<a id="__codelineno-78-11" name="__codelineno-78-11" href="#__codelineno-78-11"></a>             <span class="m">85</span>.65787509,  <span class="m">87</span>.33518953,  <span class="m">89</span>.01250396,  <span class="m">90</span>.6898184 ,
+<a id="__codelineno-78-12" name="__codelineno-78-12" href="#__codelineno-78-12"></a>             <span class="m">92</span>.36713284,  <span class="m">94</span>.04444727,  <span class="m">95</span>.72176171,  <span class="m">97</span>.39907615,
+<a id="__codelineno-78-13" name="__codelineno-78-13" href="#__codelineno-78-13"></a>             <span class="m">99</span>.07639058, <span class="m">100</span>.75370502, <span class="m">102</span>.43101946, <span class="m">104</span>.1083339 ,
+<a id="__codelineno-78-14" name="__codelineno-78-14" href="#__codelineno-78-14"></a>            <span class="m">105</span>.78564833, <span class="m">107</span>.46296277, <span class="m">109</span>.14027721, <span class="m">110</span>.81759164,
+<a id="__codelineno-78-15" name="__codelineno-78-15" href="#__codelineno-78-15"></a>            <span class="m">112</span>.49490608, <span class="m">114</span>.17222052, <span class="m">115</span>.84953495, <span class="m">117</span>.52684939,
+<a id="__codelineno-78-16" name="__codelineno-78-16" href="#__codelineno-78-16"></a>            <span class="m">119</span>.20416383, <span class="m">120</span>.88147826, <span class="m">122</span>.5587927 <span class="o">])</span>,
+<a id="__codelineno-78-17" name="__codelineno-78-17" href="#__codelineno-78-17"></a>     &lt;a list of <span class="m">50</span> Patch objects&gt;<span class="o">)</span>
+</code></pre></div>
+<h3 id="matrix-in-numpy">Matrix in numpy</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="n">four_by_four_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="n">four_by_four_matrix</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a>matrix<span class="o">([[</span><span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>.<span class="o">]</span>,
+<a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a>            <span class="o">[</span><span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>.<span class="o">]</span>,
+<a id="__codelineno-81-3" name="__codelineno-81-3" href="#__codelineno-81-3"></a>            <span class="o">[</span><span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>.<span class="o">]</span>,
+<a id="__codelineno-81-4" name="__codelineno-81-4" href="#__codelineno-81-4"></a>            <span class="o">[</span><span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>.<span class="o">]])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">four_by_four_matrix</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<a id="__codelineno-82-2" name="__codelineno-82-2" href="#__codelineno-82-2"></a><span class="n">four_by_four_matrix</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>matrix<span class="o">([[</span><span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>.<span class="o">]</span>,
+<a id="__codelineno-83-2" name="__codelineno-83-2" href="#__codelineno-83-2"></a>            <span class="o">[</span><span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>.<span class="o">]</span>,
+<a id="__codelineno-83-3" name="__codelineno-83-3" href="#__codelineno-83-3"></a>            <span class="o">[</span><span class="m">2</span>., <span class="m">2</span>., <span class="m">2</span>., <span class="m">2</span>.<span class="o">]</span>,
+<a id="__codelineno-83-4" name="__codelineno-83-4" href="#__codelineno-83-4"></a>            <span class="o">[</span><span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>., <span class="m">1</span>.<span class="o">]])</span>
+</code></pre></div>
+<h3 id="numpy-numpyarange">Numpy numpy.arange()</h3>
+<h4 id="what-is-arrange">What is Arrange?</h4>
+<p>Sometimes, you want to create values that are evenly spaced within a defined interval. For instance, you want to create values from 1 to 10; you can use numpy.arange() function</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="c1"># creating list using range(starting, stop, step)</span>
+<a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a><span class="n">lst</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-84-3" name="__codelineno-84-3" href="#__codelineno-84-3"></a><span class="n">lst</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+<a id="__codelineno-86-2" name="__codelineno-86-2" href="#__codelineno-86-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</code></pre></div>
+<p>```sh 0
+    2
+    4
+    6
+    8
+    10
+<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>```py
+<a id="__codelineno-87-2" name="__codelineno-87-2" href="#__codelineno-87-2"></a># Similar to range arange numpy.arange(start, stop, step)
+<a id="__codelineno-87-3" name="__codelineno-87-3" href="#__codelineno-87-3"></a>whole_numbers = np.arange(0, 20, 1)
+<a id="__codelineno-87-4" name="__codelineno-87-4" href="#__codelineno-87-4"></a>whole_numbers
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>array<span class="o">([</span> <span class="m">0</span>,  <span class="m">1</span>,  <span class="m">2</span>,  <span class="m">3</span>,  <span class="m">4</span>,  <span class="m">5</span>,  <span class="m">6</span>,  <span class="m">7</span>,  <span class="m">8</span>,  <span class="m">9</span>, <span class="m">10</span>, <span class="m">11</span>, <span class="m">12</span>, <span class="m">13</span>, <span class="m">14</span>, <span class="m">15</span>, <span class="m">16</span>,
+<a id="__codelineno-88-2" name="__codelineno-88-2" href="#__codelineno-88-2"></a>           <span class="m">17</span>, <span class="m">18</span>, <span class="m">19</span><span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="n">natural_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-89-2" name="__codelineno-89-2" href="#__codelineno-89-2"></a><span class="n">natural_numbers</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="n">odd_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a><span class="n">odd_numbers</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a>    array<span class="o">([</span> <span class="m">1</span>,  <span class="m">3</span>,  <span class="m">5</span>,  <span class="m">7</span>,  <span class="m">9</span>, <span class="m">11</span>, <span class="m">13</span>, <span class="m">15</span>, <span class="m">17</span>, <span class="m">19</span><span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="n">even_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a><span class="n">even_numbers</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a>    array<span class="o">([</span> <span class="m">2</span>,  <span class="m">4</span>,  <span class="m">6</span>,  <span class="m">8</span>, <span class="m">10</span>, <span class="m">12</span>, <span class="m">14</span>, <span class="m">16</span>, <span class="m">18</span><span class="o">])</span>
+</code></pre></div>
+<h3 id="creating-sequence-of-numbers-using-linspace">Creating sequence of numbers using linspace</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="c1"># numpy.linspace()</span>
+<a id="__codelineno-94-2" name="__codelineno-94-2" href="#__codelineno-94-2"></a><span class="c1"># numpy.logspace() in Python with Example</span>
+<a id="__codelineno-94-3" name="__codelineno-94-3" href="#__codelineno-94-3"></a><span class="c1"># For instance, it can be used to create 10 values from 1 to 5 evenly spaced.</span>
+<a id="__codelineno-94-4" name="__codelineno-94-4" href="#__codelineno-94-4"></a><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a>    array<span class="o">([</span><span class="m">1</span>.        , <span class="m">1</span>.44444444, <span class="m">1</span>.88888889, <span class="m">2</span>.33333333, <span class="m">2</span>.77777778,
+<a id="__codelineno-95-2" name="__codelineno-95-2" href="#__codelineno-95-2"></a>           <span class="m">3</span>.22222222, <span class="m">3</span>.66666667, <span class="m">4</span>.11111111, <span class="m">4</span>.55555556, <span class="m">5</span>.        <span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="c1"># not to include the last value in the interval</span>
+<a id="__codelineno-96-2" name="__codelineno-96-2" href="#__codelineno-96-2"></a><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a>array([1. , 1.8, 2.6, 3.4, 4.2])
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a><span class="c1"># LogSpace</span>
+<a id="__codelineno-98-2" name="__codelineno-98-2" href="#__codelineno-98-2"></a><span class="c1"># LogSpace returns even spaced numbers on a log scale. Logspace has the same parameters as np.linspace.</span>
+<a id="__codelineno-98-3" name="__codelineno-98-3" href="#__codelineno-98-3"></a>
+<a id="__codelineno-98-4" name="__codelineno-98-4" href="#__codelineno-98-4"></a><span class="c1"># Syntax:</span>
+<a id="__codelineno-98-5" name="__codelineno-98-5" href="#__codelineno-98-5"></a>
+<a id="__codelineno-98-6" name="__codelineno-98-6" href="#__codelineno-98-6"></a><span class="c1"># numpy.logspace(start, stop, num, endpoint)</span>
+<a id="__codelineno-98-7" name="__codelineno-98-7" href="#__codelineno-98-7"></a>
+<a id="__codelineno-98-8" name="__codelineno-98-8" href="#__codelineno-98-8"></a><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a>array<span class="o">([</span>  <span class="m">100</span>.        ,   <span class="m">464</span>.15888336,  <span class="m">2154</span>.43469003, <span class="m">10000</span>.        <span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a><span class="c1"># to check the size of an array</span>
+<a id="__codelineno-100-2" name="__codelineno-100-2" href="#__codelineno-100-2"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="n">x</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a>    array<span class="o">([</span><span class="m">1</span>.+0.j, <span class="m">2</span>.+0.j, <span class="m">3</span>.+0.j<span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="n">x</span><span class="o">.</span><span class="n">itemsize</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="m">16</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a><span class="c1"># indexing and Slicing NumPy Arrays in Python</span>
+<a id="__codelineno-105-2" name="__codelineno-105-2" href="#__codelineno-105-2"></a><span class="n">np_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
+<a id="__codelineno-105-3" name="__codelineno-105-3" href="#__codelineno-105-3"></a><span class="n">np_list</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a>    array<span class="o">([[</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">]</span>,
+<a id="__codelineno-106-2" name="__codelineno-106-2" href="#__codelineno-106-2"></a>           <span class="o">[</span><span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span><span class="o">]])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-107-1" name="__codelineno-107-1" href="#__codelineno-107-1"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First row: &#39;</span><span class="p">,</span> <span class="n">np_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<a id="__codelineno-107-2" name="__codelineno-107-2" href="#__codelineno-107-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Second row: &#39;</span><span class="p">,</span> <span class="n">np_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a>    First row:  <span class="o">[</span><span class="m">1</span> <span class="m">2</span> <span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-108-2" name="__codelineno-108-2" href="#__codelineno-108-2"></a>    Second row:  <span class="o">[</span><span class="m">4</span> <span class="m">5</span> <span class="m">6</span><span class="o">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a>print(&#39;First column: &#39;, np_list[:,0])
+<a id="__codelineno-109-2" name="__codelineno-109-2" href="#__codelineno-109-2"></a>print(&#39;Second column: &#39;, np_list[:,1])
+<a id="__codelineno-109-3" name="__codelineno-109-3" href="#__codelineno-109-3"></a>print(&#39;Third column: &#39;, np_list[:,2])
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a>    First column:  <span class="o">[</span><span class="m">1</span> <span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-110-2" name="__codelineno-110-2" href="#__codelineno-110-2"></a>    Second column:  <span class="o">[</span><span class="m">2</span> <span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-110-3" name="__codelineno-110-3" href="#__codelineno-110-3"></a>    Third column:  <span class="o">[</span><span class="m">3</span> <span class="m">6</span><span class="o">]</span>
+</code></pre></div>
+<h3 id="numpy-statistical-functions-with-example">NumPy Statistical Functions with Example</h3>
+<p>NumPy has quite useful statistical functions for finding minimum, maximum, mean, median, percentile,standard deviation and variance, etc from the given elements in the array.
+The functions are explained as follows −
+Statistical function
+Numpy is equipped with the robust statistical function as listed below</p>
+<ul>
+<li>Numpy Functions</li>
+<li>Min np.min()</li>
+<li>Max np.max()</li>
+<li>Mean np.mean()</li>
+<li>Median np.median()</li>
+<li>Varience</li>
+<li>Percentile</li>
+<li>Standard deviation np.std()</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-111-1" name="__codelineno-111-1" href="#__codelineno-111-1"></a><span class="n">np_normal_dis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-111-2" name="__codelineno-111-2" href="#__codelineno-111-2"></a><span class="n">np_normal_dis</span>
+<a id="__codelineno-111-3" name="__codelineno-111-3" href="#__codelineno-111-3"></a><span class="c1">## min, max, mean, median, sd</span>
+<a id="__codelineno-111-4" name="__codelineno-111-4" href="#__codelineno-111-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;min: &#39;</span><span class="p">,</span> <span class="n">two_dimension_array</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<a id="__codelineno-111-5" name="__codelineno-111-5" href="#__codelineno-111-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max: &#39;</span><span class="p">,</span> <span class="n">two_dimension_array</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<a id="__codelineno-111-6" name="__codelineno-111-6" href="#__codelineno-111-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean: &#39;</span><span class="p">,</span><span class="n">two_dimension_array</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-111-7" name="__codelineno-111-7" href="#__codelineno-111-7"></a><span class="c1"># print(&#39;median: &#39;, two_dimension_array.median())</span>
+<a id="__codelineno-111-8" name="__codelineno-111-8" href="#__codelineno-111-8"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sd: &#39;</span><span class="p">,</span> <span class="n">two_dimension_array</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>min:  1
+max:  55
+mean:  14.777777777777779
+sd:  18.913709183069525
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-112-1" name="__codelineno-112-1" href="#__codelineno-112-1"></a><span class="nb">min</span><span class="p">:</span>  <span class="mi">1</span>
+<a id="__codelineno-112-2" name="__codelineno-112-2" href="#__codelineno-112-2"></a><span class="nb">max</span><span class="p">:</span>  <span class="mi">55</span>
+<a id="__codelineno-112-3" name="__codelineno-112-3" href="#__codelineno-112-3"></a><span class="n">mean</span><span class="p">:</span>  <span class="mf">14.777777777777779</span>
+<a id="__codelineno-112-4" name="__codelineno-112-4" href="#__codelineno-112-4"></a><span class="n">sd</span><span class="p">:</span>  <span class="mf">18.913709183069525</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-113-1" name="__codelineno-113-1" href="#__codelineno-113-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">)</span>
+<a id="__codelineno-113-2" name="__codelineno-113-2" href="#__codelineno-113-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Column with minimum: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<a id="__codelineno-113-3" name="__codelineno-113-3" href="#__codelineno-113-3"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Column with maximum: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<a id="__codelineno-113-4" name="__codelineno-113-4" href="#__codelineno-113-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== Row ==&#39;</span><span class="p">)</span>
+<a id="__codelineno-113-5" name="__codelineno-113-5" href="#__codelineno-113-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Row with minimum: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-113-6" name="__codelineno-113-6" href="#__codelineno-113-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Row with maximum: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">two_dimension_array</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[[ 1  2  3]
+ [ 4 55 44]
+ [ 7  8  9]]
+Column with minimum:  [1 2 3]
+Column with maximum:  [ 7 55 44]
+=== Row ==
+Row with minimum:  [1 4 7]
+Row with maximum:  [ 3 55  9]
+</code></pre></div>
+<h3 id="how-to-create-repeating-sequences">How to create repeating sequences?</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-114-1" name="__codelineno-114-1" href="#__codelineno-114-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-114-2" name="__codelineno-114-2" href="#__codelineno-114-2"></a>
+<a id="__codelineno-114-3" name="__codelineno-114-3" href="#__codelineno-114-3"></a><span class="c1"># Repeat whole of &#39;a&#39; two times</span>
+<a id="__codelineno-114-4" name="__codelineno-114-4" href="#__codelineno-114-4"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tile:   &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<a id="__codelineno-114-5" name="__codelineno-114-5" href="#__codelineno-114-5"></a>
+<a id="__codelineno-114-6" name="__codelineno-114-6" href="#__codelineno-114-6"></a><span class="c1"># Repeat each element of &#39;a&#39; two times</span>
+<a id="__codelineno-114-7" name="__codelineno-114-7" href="#__codelineno-114-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Repeat: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Tile:    [1 2 3 1 2 3]
+Repeat:  [1 1 2 2 3 3]
+</code></pre></div>
+<h3 id="how-to-generate-random-numbers">How to generate random numbers?</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-115-1" name="__codelineno-115-1" href="#__codelineno-115-1"></a><span class="c1"># One random number between [0,1)</span>
+<a id="__codelineno-115-2" name="__codelineno-115-2" href="#__codelineno-115-2"></a><span class="n">one_random_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<a id="__codelineno-115-3" name="__codelineno-115-3" href="#__codelineno-115-3"></a><span class="n">one_random_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span>
+<a id="__codelineno-115-4" name="__codelineno-115-4" href="#__codelineno-115-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">one_random_num</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>0.6149403282678213
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a><span class="mf">0.4763968133790438</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>0.4763968133790438
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-117-1" name="__codelineno-117-1" href="#__codelineno-117-1"></a><span class="c1"># Random numbers between [0,1) of shape 2,3</span>
+<a id="__codelineno-117-2" name="__codelineno-117-2" href="#__codelineno-117-2"></a><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-117-3" name="__codelineno-117-3" href="#__codelineno-117-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[[0.13031737 0.4429537  0.1129527 ]
+ [0.76811539 0.88256594 0.6754075 ]]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-118-1" name="__codelineno-118-1" href="#__codelineno-118-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;u&#39; &#39;o&#39; &#39;o&#39; &#39;i&#39; &#39;e&#39; &#39;e&#39; &#39;u&#39; &#39;o&#39; &#39;u&#39; &#39;a&#39;]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a><span class="p">[</span><span class="s1">&#39;i&#39;</span> <span class="s1">&#39;u&#39;</span> <span class="s1">&#39;e&#39;</span> <span class="s1">&#39;o&#39;</span> <span class="s1">&#39;a&#39;</span> <span class="s1">&#39;i&#39;</span> <span class="s1">&#39;e&#39;</span> <span class="s1">&#39;u&#39;</span> <span class="s1">&#39;o&#39;</span> <span class="s1">&#39;i&#39;</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;iueoaieuoi&#39;]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-120-1" name="__codelineno-120-1" href="#__codelineno-120-1"></a><span class="c1">## Random numbers between [0, 1] of shape 2, 2</span>
+<a id="__codelineno-120-2" name="__codelineno-120-2" href="#__codelineno-120-2"></a><span class="n">rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-120-3" name="__codelineno-120-3" href="#__codelineno-120-3"></a><span class="n">rand</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[0.97992598, 0.79642484],
+       [0.65263629, 0.55763145]])
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-121-1" name="__codelineno-121-1" href="#__codelineno-121-1"></a><span class="n">rand2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-121-2" name="__codelineno-121-2" href="#__codelineno-121-2"></a><span class="n">rand2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[ 1.65593322, -0.52326621],
+       [ 0.39071179, -2.03649407]])
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-122-1" name="__codelineno-122-1" href="#__codelineno-122-1"></a><span class="c1"># Random integers between [0, 10) of shape 2,5</span>
+<a id="__codelineno-122-2" name="__codelineno-122-2" href="#__codelineno-122-2"></a><span class="n">rand_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-122-3" name="__codelineno-122-3" href="#__codelineno-122-3"></a><span class="n">rand_int</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[0, 7, 5],
+       [4, 1, 4],
+       [3, 5, 3],
+       [4, 3, 8],
+       [4, 6, 7]])
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-123-1" name="__codelineno-123-1" href="#__codelineno-123-1"></a><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<a id="__codelineno-123-2" name="__codelineno-123-2" href="#__codelineno-123-2"></a><span class="n">np_normal_dis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># mean, standard deviation, number of samples</span>
+<a id="__codelineno-123-3" name="__codelineno-123-3" href="#__codelineno-123-3"></a><span class="n">np_normal_dis</span>
+<a id="__codelineno-123-4" name="__codelineno-123-4" href="#__codelineno-123-4"></a><span class="c1">## min, max, mean, median, sd</span>
+<a id="__codelineno-123-5" name="__codelineno-123-5" href="#__codelineno-123-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;min: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np_normal_dis</span><span class="p">))</span>
+<a id="__codelineno-123-6" name="__codelineno-123-6" href="#__codelineno-123-6"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np_normal_dis</span><span class="p">))</span>
+<a id="__codelineno-123-7" name="__codelineno-123-7" href="#__codelineno-123-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np_normal_dis</span><span class="p">))</span>
+<a id="__codelineno-123-8" name="__codelineno-123-8" href="#__codelineno-123-8"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;median: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np_normal_dis</span><span class="p">))</span>
+<a id="__codelineno-123-9" name="__codelineno-123-9" href="#__codelineno-123-9"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mode: &#39;</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">np_normal_dis</span><span class="p">))</span>
+<a id="__codelineno-123-10" name="__codelineno-123-10" href="#__codelineno-123-10"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sd: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np_normal_dis</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-124-1" name="__codelineno-124-1" href="#__codelineno-124-1"></a>    min:  <span class="m">3</span>.557811005458804
+<a id="__codelineno-124-2" name="__codelineno-124-2" href="#__codelineno-124-2"></a>    max:  <span class="m">6</span>.876317743643499
+<a id="__codelineno-124-3" name="__codelineno-124-3" href="#__codelineno-124-3"></a>    mean:  <span class="m">5</span>.035832048106663
+<a id="__codelineno-124-4" name="__codelineno-124-4" href="#__codelineno-124-4"></a>    median:  <span class="m">5</span>.020161980441937
+<a id="__codelineno-124-5" name="__codelineno-124-5" href="#__codelineno-124-5"></a>    mode:  ModeResult<span class="o">(</span><span class="nv">mode</span><span class="o">=</span>array<span class="o">([</span><span class="m">3</span>.55781101<span class="o">])</span>, <span class="nv">count</span><span class="o">=</span>array<span class="o">([</span><span class="m">1</span><span class="o">]))</span>
+<a id="__codelineno-124-6" name="__codelineno-124-6" href="#__codelineno-124-6"></a>    sd:  <span class="m">0</span>.489682424165213
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-125-1" name="__codelineno-125-1" href="#__codelineno-125-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np_normal_dis</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
+<a id="__codelineno-125-2" name="__codelineno-125-2" href="#__codelineno-125-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../images/test_121_0.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-126-1" name="__codelineno-126-1" href="#__codelineno-126-1"></a><span class="c1"># numpy.dot(): Dot Product in Python using Numpy</span>
+<a id="__codelineno-126-2" name="__codelineno-126-2" href="#__codelineno-126-2"></a><span class="c1"># Dot Product</span>
+<a id="__codelineno-126-3" name="__codelineno-126-3" href="#__codelineno-126-3"></a><span class="c1"># Numpy is powerful library for matrices computation. For instance, you can compute the dot product with np.dot</span>
+<a id="__codelineno-126-4" name="__codelineno-126-4" href="#__codelineno-126-4"></a>
+<a id="__codelineno-126-5" name="__codelineno-126-5" href="#__codelineno-126-5"></a><span class="c1"># Syntax</span>
+<a id="__codelineno-126-6" name="__codelineno-126-6" href="#__codelineno-126-6"></a>
+<a id="__codelineno-126-7" name="__codelineno-126-7" href="#__codelineno-126-7"></a><span class="c1"># numpy.dot(x, y, out=None)</span>
+</code></pre></div>
+<h3 id="linear-algebra">Linear Algebra</h3>
+<ol>
+<li>Dot Product</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="c1">## Linear algebra</span>
+<a id="__codelineno-127-2" name="__codelineno-127-2" href="#__codelineno-127-2"></a><span class="c1">### Dot product: product of two arrays</span>
+<a id="__codelineno-127-3" name="__codelineno-127-3" href="#__codelineno-127-3"></a><span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-127-4" name="__codelineno-127-4" href="#__codelineno-127-4"></a><span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-127-5" name="__codelineno-127-5" href="#__codelineno-127-5"></a><span class="c1">### 1*4+2*5 + 3*6</span>
+<a id="__codelineno-127-6" name="__codelineno-127-6" href="#__codelineno-127-6"></a><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>  <span class="c1"># 23</span>
+</code></pre></div>
+<h3 id="numpy-matrix-multiplication-with-npmatmul">NumPy Matrix Multiplication with np.matmul()</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-128-1" name="__codelineno-128-1" href="#__codelineno-128-1"></a><span class="c1">### Matmul: matruc product of two arrays</span>
+<a id="__codelineno-128-2" name="__codelineno-128-2" href="#__codelineno-128-2"></a><span class="n">h</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]</span>
+<a id="__codelineno-128-3" name="__codelineno-128-3" href="#__codelineno-128-3"></a><span class="n">i</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]</span>
+<a id="__codelineno-128-4" name="__codelineno-128-4" href="#__codelineno-128-4"></a><span class="c1">### 1*5+2*7 = 19</span>
+<a id="__codelineno-128-5" name="__codelineno-128-5" href="#__codelineno-128-5"></a><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-129-1" name="__codelineno-129-1" href="#__codelineno-129-1"></a>    array<span class="o">([[</span><span class="m">19</span>, <span class="m">22</span><span class="o">]</span>,
+<a id="__codelineno-129-2" name="__codelineno-129-2" href="#__codelineno-129-2"></a>           <span class="o">[</span><span class="m">43</span>, <span class="m">50</span><span class="o">]])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-130-1" name="__codelineno-130-1" href="#__codelineno-130-1"></a><span class="c1">## Determinant 2*2 matrix</span>
+<a id="__codelineno-130-2" name="__codelineno-130-2" href="#__codelineno-130-2"></a><span class="c1">### 5*8-7*6np.linalg.det(i)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-131-1" name="__codelineno-131-1" href="#__codelineno-131-1"></a><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>-1.999999999999999
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-132-1" name="__codelineno-132-1" href="#__codelineno-132-1"></a><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<a id="__codelineno-132-2" name="__codelineno-132-2" href="#__codelineno-132-2"></a><span class="n">Z</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-132-3" name="__codelineno-132-3" href="#__codelineno-132-3"></a><span class="n">Z</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-133-1" name="__codelineno-133-1" href="#__codelineno-133-1"></a><span class="n">Z</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[0., 1., 0., 1., 0., 1., 0., 1.],
+       [1., 0., 1., 0., 1., 0., 1., 0.],
+       [0., 1., 0., 1., 0., 1., 0., 1.],
+       [1., 0., 1., 0., 1., 0., 1., 0.],
+       [0., 1., 0., 1., 0., 1., 0., 1.],
+       [1., 0., 1., 0., 1., 0., 1., 0.],
+       [0., 1., 0., 1., 0., 1., 0., 1.],
+       [1., 0., 1., 0., 1., 0., 1., 0.]])
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-134-1" name="__codelineno-134-1" href="#__codelineno-134-1"></a><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-135-1" name="__codelineno-135-1" href="#__codelineno-135-1"></a><span class="n">new_list</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-136-1" name="__codelineno-136-1" href="#__codelineno-136-1"></a><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-137-1" name="__codelineno-137-1" href="#__codelineno-137-1"></a><span class="n">np_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<a id="__codelineno-137-2" name="__codelineno-137-2" href="#__codelineno-137-2"></a><span class="n">np_arr</span> <span class="o">+</span> <span class="mi">2</span>
+</code></pre></div>
+<p>array([ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])</p>
+<p>We use linear equation for quatities which have linear relationship. Let's see the example below:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-138-1" name="__codelineno-138-1" href="#__codelineno-138-1"></a><span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-138-2" name="__codelineno-138-2" href="#__codelineno-138-2"></a><span class="n">pressure</span> <span class="o">=</span> <span class="n">temp</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span>
+<a id="__codelineno-138-3" name="__codelineno-138-3" href="#__codelineno-138-3"></a><span class="n">pressure</span>
+</code></pre></div>
+<p>array([ 7, 9, 11, 13, 15])</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-139-1" name="__codelineno-139-1" href="#__codelineno-139-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="n">pressure</span><span class="p">)</span>
+<a id="__codelineno-139-2" name="__codelineno-139-2" href="#__codelineno-139-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature in oC&#39;</span><span class="p">)</span>
+<a id="__codelineno-139-3" name="__codelineno-139-3" href="#__codelineno-139-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure in atm&#39;</span><span class="p">)</span>
+<a id="__codelineno-139-4" name="__codelineno-139-4" href="#__codelineno-139-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Temperature vs Pressure&#39;</span><span class="p">)</span>
+<a id="__codelineno-139-5" name="__codelineno-139-5" href="#__codelineno-139-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
+<a id="__codelineno-139-6" name="__codelineno-139-6" href="#__codelineno-139-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../images/test_141_0.png" /></p>
+<p>To draw the Gaussian normal distribution using numpy. As you can see below, the numpy can generate random numbers. To create random sample, we need the mean(mu), sigma(standard deviation), mumber of data points.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a><span class="n">mu</span> <span class="o">=</span> <span class="mi">28</span>
+<a id="__codelineno-140-2" name="__codelineno-140-2" href="#__codelineno-140-2"></a><span class="n">sigma</span> <span class="o">=</span> <span class="mi">15</span>
+<a id="__codelineno-140-3" name="__codelineno-140-3" href="#__codelineno-140-3"></a><span class="n">samples</span> <span class="o">=</span> <span class="mi">100000</span>
+<a id="__codelineno-140-4" name="__codelineno-140-4" href="#__codelineno-140-4"></a>
+<a id="__codelineno-140-5" name="__codelineno-140-5" href="#__codelineno-140-5"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+<a id="__codelineno-140-6" name="__codelineno-140-6" href="#__codelineno-140-6"></a><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-140-7" name="__codelineno-140-7" href="#__codelineno-140-7"></a><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<a id="__codelineno-140-8" name="__codelineno-140-8" href="#__codelineno-140-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../images/test_143_0.png" /></p>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

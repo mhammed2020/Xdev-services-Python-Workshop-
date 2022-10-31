@@ -1,0 +1,1674 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
+    
+    
+      
+        <title>Pandas - Xdev services | Python Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#e92063">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="pink" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-pandas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Xdev services | Python Workshop" class="md-header__button md-logo" aria-label="Xdev services | Python Workshop" data-md-component="logo">
+      
+  <img src="../assets/logos.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Xdev services | Python Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pandas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Xdev services | Python Workshop" class="md-nav__button md-logo" aria-label="Xdev services | Python Workshop" data-md-component="logo">
+      
+  <img src="../assets/logos.png" alt="logo">
+
+    </a>
+    Xdev services | Python Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Python Radar Toolkit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Data Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Analysis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pandas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pandas
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-pandas" class="md-nav__link">
+    Installing Pandas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-pandas" class="md-nav__link">
+    Importing Pandas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-pandas-series-with-default-index" class="md-nav__link">
+    Creating Pandas Series with Default Index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-pandas-series-with-custom-index" class="md-nav__link">
+    Creating  Pandas Series with custom index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-pandas-series-from-a-dictionary" class="md-nav__link">
+    Creating Pandas Series from a Dictionary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-constant-pandas-series" class="md-nav__link">
+    Creating a Constant Pandas Series
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-pandas-series-using-linspace" class="md-nav__link">
+    Creating a  Pandas Series Using Linspace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataframes" class="md-nav__link">
+    DataFrames
+  </a>
+  
+    <nav class="md-nav" aria-label="DataFrames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-dataframes-from-list-of-lists" class="md-nav__link">
+    Creating DataFrames from List of Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-dataframe-using-dictionary" class="md-nav__link">
+    Creating DataFrame Using Dictionary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-dataframes-from-a-list-of-dictionaries" class="md-nav__link">
+    Creating DataFrames from a List of Dictionaries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-csv-file-using-pandas" class="md-nav__link">
+    Reading CSV File Using Pandas
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading CSV File Using Pandas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-exploration" class="md-nav__link">
+    Data Exploration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-a-dataframe" class="md-nav__link">
+    Modifying a DataFrame
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying a DataFrame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-dataframe" class="md-nav__link">
+    Creating a DataFrame
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-column" class="md-nav__link">
+    Adding a New Column
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-column-values" class="md-nav__link">
+    Modifying column values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formating-dataframe-columns" class="md-nav__link">
+    Formating DataFrame columns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-data-types-of-column-values" class="md-nav__link">
+    Checking data types of Column values
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking data types of Column values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boolean-indexing" class="md-nav__link">
+    Boolean Indexing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        Numpy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-pandas" class="md-nav__link">
+    Installing Pandas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-pandas" class="md-nav__link">
+    Importing Pandas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-pandas-series-with-default-index" class="md-nav__link">
+    Creating Pandas Series with Default Index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-pandas-series-with-custom-index" class="md-nav__link">
+    Creating  Pandas Series with custom index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-pandas-series-from-a-dictionary" class="md-nav__link">
+    Creating Pandas Series from a Dictionary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-constant-pandas-series" class="md-nav__link">
+    Creating a Constant Pandas Series
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-pandas-series-using-linspace" class="md-nav__link">
+    Creating a  Pandas Series Using Linspace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataframes" class="md-nav__link">
+    DataFrames
+  </a>
+  
+    <nav class="md-nav" aria-label="DataFrames">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-dataframes-from-list-of-lists" class="md-nav__link">
+    Creating DataFrames from List of Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-dataframe-using-dictionary" class="md-nav__link">
+    Creating DataFrame Using Dictionary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-dataframes-from-a-list-of-dictionaries" class="md-nav__link">
+    Creating DataFrames from a List of Dictionaries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-csv-file-using-pandas" class="md-nav__link">
+    Reading CSV File Using Pandas
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading CSV File Using Pandas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-exploration" class="md-nav__link">
+    Data Exploration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-a-dataframe" class="md-nav__link">
+    Modifying a DataFrame
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying a DataFrame">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-dataframe" class="md-nav__link">
+    Creating a DataFrame
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-column" class="md-nav__link">
+    Adding a New Column
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modifying-column-values" class="md-nav__link">
+    Modifying column values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formating-dataframe-columns" class="md-nav__link">
+    Formating DataFrame columns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-data-types-of-column-values" class="md-nav__link">
+    Checking data types of Column values
+  </a>
+  
+    <nav class="md-nav" aria-label="Checking data types of Column values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boolean-indexing" class="md-nav__link">
+    Boolean Indexing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Pandas</h1>
+
+<p>Pandas is an open source, high-performance, easy-to-use data structures and data analysis tools for the Python programming language.
+Pandas adds data structures and tools designed to work with table-like data which is <em>Series</em> and <em>Data Frames</em>.
+Pandas provides tools for data manipulation: </p>
+<ul>
+<li>reshaping</li>
+<li>merging</li>
+<li>sorting</li>
+<li>slicing</li>
+<li>aggregation</li>
+<li>imputation.
+If you are using anaconda, you do not have install pandas.</li>
+</ul>
+<h3 id="installing-pandas">Installing Pandas</h3>
+<p>For Mac:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">conda</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">conda</span> <span class="n">install</span> <span class="n">pandas</span>
+</code></pre></div></p>
+<p>For Windows:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">conda</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+</code></pre></div></p>
+<p>Pandas data structure is based on <em>Series</em> and <em>DataFrames</em>. </p>
+<p>A <em>series</em> is a <em>column</em> and a DataFrame is a <em>multidimensional table</em> made up of collection of <em>series</em>. In order to create a pandas series we should use numpy to create a one dimensional arrays or a python list.
+Let us see an example of a series:</p>
+<p>Names Pandas Series</p>
+<p><img alt="pandas series" src="../images/pandas-series-1.png" /> </p>
+<p>Countries Series</p>
+<p><img alt="pandas series" src="../images/pandas-series-2.png" /> </p>
+<p>Cities Series</p>
+<p><img alt="pandas series" src="../images/pandas-series-3.png" /></p>
+<p>As you can see, pandas series is just one column of data. If we want to have multiple columns we use data frames. The example below shows pandas DataFrames.</p>
+<p>Let us see, an example of a pandas data frame:</p>
+<p><img alt="Pandas data frame" src="../images/pandas-dataframe-1.png" /></p>
+<p>Data frame is a collection of rows and columns. Look at the table below; it has many more columns than the example above:</p>
+<p><img alt="Pandas data frame" src="../images/pandas-dataframe-2.png" /></p>
+<p>Next, we will see how to import pandas and how to create Series and DataFrames using pandas</p>
+<h3 id="importing-pandas">Importing Pandas</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># importing pandas as pd</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">numpy</span>  <span class="k">as</span> <span class="nn">np</span> <span class="c1"># importing numpy as np</span>
+</code></pre></div>
+<h3 id="creating-pandas-series-with-default-index">Creating Pandas Series with Default Index</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>    <span class="m">0</span>    <span class="m">1</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="m">1</span>    <span class="m">2</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="m">2</span>    <span class="m">3</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="m">3</span>    <span class="m">4</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="m">4</span>    <span class="m">5</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    dtype: int64
+</code></pre></div>
+<h3 id="creating-pandas-series-with-custom-index">Creating  Pandas Series with custom index</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>    <span class="m">1</span>    <span class="m">1</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="m">2</span>    <span class="m">2</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="m">3</span>    <span class="m">3</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="m">4</span>    <span class="m">4</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="m">5</span>    <span class="m">5</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    dtype: int64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Orange&#39;</span><span class="p">,</span><span class="s1">&#39;Banana&#39;</span><span class="p">,</span><span class="s1">&#39;Mango&#39;</span><span class="p">]</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>    <span class="m">1</span>    Orange
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="m">2</span>    Banana
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="m">3</span>    Mango
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    dtype: object
+</code></pre></div>
+<h3 id="creating-pandas-series-from-a-dictionary">Creating Pandas Series from a Dictionary</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">dct</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Asabeneh&#39;</span><span class="p">,</span><span class="s1">&#39;country&#39;</span><span class="p">:</span><span class="s1">&#39;Finland&#39;</span><span class="p">,</span><span class="s1">&#39;city&#39;</span><span class="p">:</span><span class="s1">&#39;Helsinki&#39;</span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dct</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>    name       Asabeneh
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    country     Finland
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    city       Helsinki
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    dtype: object
+</code></pre></div>
+<h3 id="creating-a-constant-pandas-series">Creating a Constant Pandas Series</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>    <span class="m">1</span>    <span class="m">10</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="m">2</span>    <span class="m">10</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="m">3</span>    <span class="m">10</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    dtype: int64
+</code></pre></div>
+<h3 id="creating-a-pandas-series-using-linspace">Creating a  Pandas Series Using Linspace</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># linspace(starting, end, items)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>    <span class="m">0</span>     <span class="m">5</span>.000000
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="m">1</span>     <span class="m">6</span>.666667
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="m">2</span>     <span class="m">8</span>.333333
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="m">3</span>    <span class="m">10</span>.000000
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="m">4</span>    <span class="m">11</span>.666667
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="m">5</span>    <span class="m">13</span>.333333
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="m">6</span>    <span class="m">15</span>.000000
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="m">7</span>    <span class="m">16</span>.666667
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>    <span class="m">8</span>    <span class="m">18</span>.333333
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="m">9</span>    <span class="m">20</span>.000000
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>    dtype: float64
+</code></pre></div>
+<h2 id="dataframes">DataFrames</h2>
+<p>Pandas data frames can be created in different ways.</p>
+<h3 id="creating-dataframes-from-list-of-lists">Creating DataFrames from List of Lists</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="p">[</span><span class="s1">&#39;Medo&#39;</span><span class="p">,</span> <span class="s1">&#39;Finland&#39;</span><span class="p">,</span> <span class="s1">&#39;Helsink&#39;</span><span class="p">],</span> 
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="p">[</span><span class="s1">&#39;Joe&#39;</span><span class="p">,</span> <span class="s1">&#39;UK&#39;</span><span class="p">,</span> <span class="s1">&#39;London&#39;</span><span class="p">],</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="p">[</span><span class="s1">&#39;Sarah&#39;</span><span class="p">,</span> <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span> <span class="s1">&#39;Stockholm&#39;</span><span class="p">]</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">]</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Names&#39;</span><span class="p">,</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span><span class="s1">&#39;City&#39;</span><span class="p">])</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Names</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsink</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="creating-dataframe-using-dictionary">Creating DataFrame Using Dictionary</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Asabeneh&#39;</span><span class="p">,</span> <span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">],</span> <span class="s1">&#39;Country&#39;</span><span class="p">:[</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="s1">&#39;Finland&#39;</span><span class="p">,</span> <span class="s1">&#39;UK&#39;</span><span class="p">,</span> <span class="s1">&#39;Sweden&#39;</span><span class="p">],</span> <span class="s1">&#39;City&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Helsiki&#39;</span><span class="p">,</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span> <span class="s1">&#39;Stockholm&#39;</span><span class="p">]}</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsiki</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="creating-dataframes-from-a-list-of-dictionaries">Creating DataFrames from a List of Dictionaries</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;Asabeneh&#39;</span><span class="p">,</span> <span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="s1">&#39;Finland&#39;</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">:</span> <span class="s1">&#39;Helsinki&#39;</span><span class="p">},</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;David&#39;</span><span class="p">,</span> <span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="s1">&#39;UK&#39;</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">:</span> <span class="s1">&#39;London&#39;</span><span class="p">},</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="p">{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="s1">&#39;Sweden&#39;</span><span class="p">,</span> <span class="s1">&#39;City&#39;</span><span class="p">:</span> <span class="s1">&#39;Stockholm&#39;</span><span class="p">}]</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="reading-csv-file-using-pandas">Reading CSV File Using Pandas</h2>
+<p>To download the CSV file, what is needed in this example, console/command line is enough:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>curl -O https://raw.githubusercontent.com/Asabeneh/30-Days-Of-Python/master/data/weight-height.csv
+</code></pre></div>
+<p>Put the downloaded file in your working directory.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;weight-height.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="data-exploration">Data Exploration</h3>
+<p>Let us read only the first 5 rows using head()</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span> <span class="c1"># give five rows we can increase the number of rows by passing argument to the head() method</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Height</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Male</td>
+      <td>73.847017</td>
+      <td>241.893563</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Male</td>
+      <td>68.781904</td>
+      <td>162.310473</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Male</td>
+      <td>74.110105</td>
+      <td>212.740856</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Male</td>
+      <td>71.730978</td>
+      <td>220.042470</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Male</td>
+      <td>69.881796</td>
+      <td>206.349801</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Let us also explore the last recordings of the dataframe using the tail() methods.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span> <span class="c1"># tails give the last five rows, we can increase the rows by passing argument to tail method</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Height</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9995</td>
+      <td>Female</td>
+      <td>66.172652</td>
+      <td>136.777454</td>
+    </tr>
+    <tr>
+      <td>9996</td>
+      <td>Female</td>
+      <td>67.067155</td>
+      <td>170.867906</td>
+    </tr>
+    <tr>
+      <td>9997</td>
+      <td>Female</td>
+      <td>63.867992</td>
+      <td>128.475319</td>
+    </tr>
+    <tr>
+      <td>9998</td>
+      <td>Female</td>
+      <td>69.034243</td>
+      <td>163.852461</td>
+    </tr>
+    <tr>
+      <td>9999</td>
+      <td>Female</td>
+      <td>61.944246</td>
+      <td>113.649103</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>As you can see the csv file has three rows: Gender, Height and Weight. If the DataFrame would have a long rows, it would be hard to know all the columns. Therefore, we should use a method to know the colums.  we do not know the number of rows. Let's use shape meathod.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># as you can see 10000 rows and three columns</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(10000, 3)
+</code></pre></div>
+<p>Let us get all the columns using columns.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Index([&#39;Gender&#39;, &#39;Height&#39;, &#39;Weight&#39;], dtype=&#39;object&#39;)
+</code></pre></div>
+<p>Now, let us get a specific column using the column key</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">heights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span> <span class="c1"># this is now a series</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>    <span class="m">0</span>       <span class="m">73</span>.847017
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="m">1</span>       <span class="m">68</span>.781904
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="m">2</span>       <span class="m">74</span>.110105
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>    <span class="m">3</span>       <span class="m">71</span>.730978
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="m">4</span>       <span class="m">69</span>.881796
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>              ...    
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    <span class="m">9995</span>    <span class="m">66</span>.172652
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>    <span class="m">9996</span>    <span class="m">67</span>.067155
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>    <span class="m">9997</span>    <span class="m">63</span>.867992
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>    <span class="m">9998</span>    <span class="m">69</span>.034243
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>    <span class="m">9999</span>    <span class="m">61</span>.944246
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>    Name: Height, Length: <span class="m">10000</span>, dtype: float64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span> <span class="c1"># this is now a series</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>    <span class="m">0</span>       <span class="m">241</span>.893563
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="m">1</span>       <span class="m">162</span>.310473
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="m">2</span>       <span class="m">212</span>.740856
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="m">3</span>       <span class="m">220</span>.042470
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>    <span class="m">4</span>       <span class="m">206</span>.349801
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>               ...    
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>    <span class="m">9995</span>    <span class="m">136</span>.777454
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>    <span class="m">9996</span>    <span class="m">170</span>.867906
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>    <span class="m">9997</span>    <span class="m">128</span>.475319
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>    <span class="m">9998</span>    <span class="m">163</span>.852461
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>    <span class="m">9999</span>    <span class="m">113</span>.649103
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>    Name: Weight, Length: <span class="m">10000</span>, dtype: float64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>True
+</code></pre></div>
+<p>The describe() method provides a descriptive statistical values of a dataset.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">heights</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span> <span class="c1"># give statisical information about height data</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>    count    <span class="m">10000</span>.000000
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    mean        <span class="m">66</span>.367560
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    std          <span class="m">3</span>.847528
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    min         <span class="m">54</span>.263133
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="m">25</span>%         <span class="m">63</span>.505620
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>    <span class="m">50</span>%         <span class="m">66</span>.318070
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>    <span class="m">75</span>%         <span class="m">69</span>.174262
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    max         <span class="m">78</span>.998742
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    Name: Height, dtype: float64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>    count    <span class="m">10000</span>.000000
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    mean       <span class="m">161</span>.440357
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    std         <span class="m">32</span>.108439
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    min         <span class="m">64</span>.700127
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    <span class="m">25</span>%        <span class="m">135</span>.818051
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>    <span class="m">50</span>%        <span class="m">161</span>.212928
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>    <span class="m">75</span>%        <span class="m">187</span>.169525
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>    max        <span class="m">269</span>.989699
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>    Name: Weight, dtype: float64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>  <span class="c1"># describe can also give statistical information from a dataFrame</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Height</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>count</td>
+      <td>10000.000000</td>
+      <td>10000.000000</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>66.367560</td>
+      <td>161.440357</td>
+    </tr>
+    <tr>
+      <td>std</td>
+      <td>3.847528</td>
+      <td>32.108439</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>54.263133</td>
+      <td>64.700127</td>
+    </tr>
+    <tr>
+      <td>25%</td>
+      <td>63.505620</td>
+      <td>135.818051</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>66.318070</td>
+      <td>161.212928</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>69.174262</td>
+      <td>187.169525</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>78.998742</td>
+      <td>269.989699</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Similar to describe(), the info() method also give information about the dataset.</p>
+<h2 id="modifying-a-dataframe">Modifying a DataFrame</h2>
+<p>Modifying a DataFrame:
+    * We can create a new DataFrame
+    * We can create a new column and add it to the DataFrame, 
+    * we can remove an existing column from a DataFrame, 
+    * we can modify an existing column in a DataFrame, 
+    * we can change the data type of column values in the DataFrame</p>
+<h3 id="creating-a-dataframe">Creating a DataFrame</h3>
+<p>As always, first we import the necessary packages. Now, lets import pandas and numpy, two best friends ever.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Asabeneh&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">:</span><span class="s2">&quot;Finland&quot;</span><span class="p">,</span><span class="s2">&quot;City&quot;</span><span class="p">:</span><span class="s2">&quot;Helsinki&quot;</span><span class="p">},</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;David&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">:</span><span class="s2">&quot;UK&quot;</span><span class="p">,</span><span class="s2">&quot;City&quot;</span><span class="p">:</span><span class="s2">&quot;London&quot;</span><span class="p">},</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>    <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">:</span><span class="s2">&quot;Sweden&quot;</span><span class="p">,</span><span class="s2">&quot;City&quot;</span><span class="p">:</span><span class="s2">&quot;Stockholm&quot;</span><span class="p">}]</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Adding a column to a DataFrame is like adding a key to a dictionary.</p>
+<p>First let's use the previous example to create a DataFrame. After we create the DataFrame, we will start modifying the columns and column values.</p>
+<h3 id="adding-a-new-column">Adding a New Column</h3>
+<p>Let's add a weight column in the DataFrame</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">74</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">69</span><span class="p">]</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weights</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="n">df</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Let's add a height column into the DataFrame aswell</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">heights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">173</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">169</span><span class="p">]</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heights</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>173</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>169</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>As you can see in the DataFrame above, we did add new columns, Weight and Height. Let's add one additional column called BMI(Body Mass Index) by calculating their BMI using thier mass and height. BMI is mass divided by height squared (in meters) - Weight/Height * Height.</p>
+<p>As you can see, the height is in centimeters, so we shoud change it to meters. Let's modify the height row.</p>
+<h3 id="modifying-column-values">Modifying column values</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.01</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="n">df</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># Using functions makes our code clean, but you can calculate the bmi without one</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="k">def</span> <span class="nf">calculate_bmi</span> <span class="p">():</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>    <span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>    <span class="n">heights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>    <span class="n">bmi</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>    <span class="k">for</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">heights</span><span class="p">):</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>        <span class="n">b</span> <span class="o">=</span> <span class="n">w</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>        <span class="n">bmi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>    <span class="k">return</span> <span class="n">bmi</span>
+<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>
+<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a><span class="n">bmi</span> <span class="o">=</span> <span class="n">calculate_bmi</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;BMI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmi</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="n">df</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.725183</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.469388</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.158818</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="formating-dataframe-columns">Formating DataFrame columns</h3>
+<p>The BMI column values of the DataFrame are float with many significant digits after decimal. Let's change it to one significant digit after point.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;BMI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;BMI&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.7</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.5</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The information in the DataFrame seems not yet complete, let's add birth year and current year columns.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">birth_year</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1769&#39;</span><span class="p">,</span> <span class="s1">&#39;1985&#39;</span><span class="p">,</span> <span class="s1">&#39;1990&#39;</span><span class="p">]</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="n">current_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Birth Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">birth_year</span>
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Current Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_year</span>
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="n">df</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Birth Year</th>
+      <th>Current Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.7</td>
+      <td>1769</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.5</td>
+      <td>1985</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.2</td>
+      <td>1990</td>
+      <td>2020</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="checking-data-types-of-column-values">Checking data types of Column values</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Weight</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>    dtype<span class="o">(</span><span class="s1">&#39;int64&#39;</span><span class="o">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Birth Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># it gives string object , we should change this to number</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Birth Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Birth Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Birth Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="c1"># let&#39;s check the data type now</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>    dtype<span class="o">(</span><span class="s1">&#39;int32&#39;</span><span class="o">)</span>
+</code></pre></div>
+<p>Now same for the current year:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Current Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Current Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Current Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>    dtype<span class="o">(</span><span class="s1">&#39;int32&#39;</span><span class="o">)</span>
+</code></pre></div>
+<p>Now, the column values of birth year and current year are integers. We can calculate the age.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="n">ages</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Current Year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Birth Year&#39;</span><span class="p">]</span>
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="n">ages</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>0    251
+1     35
+2     30
+dtype: int32
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Ages&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ages</span>
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Birth Year</th>
+      <th>Current Year</th>
+      <th>Ages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.7</td>
+      <td>1769</td>
+      <td>2019</td>
+      <td>250</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.5</td>
+      <td>1985</td>
+      <td>2019</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.2</td>
+      <td>1990</td>
+      <td>2019</td>
+      <td>29</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The person in the first row lived so far for 251 years. It is unlikely for someone to live so long. Either it is a typo or the data is cooked. So lets fill that data with average of the columns without including outlier. </p>
+<p>mean = (35 + 30)/ 2</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="mi">35</span> <span class="o">+</span> <span class="mi">30</span><span class="p">)</span><span class="o">/</span> <span class="mi">2</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean: &#39;</span><span class="p">,</span><span class="n">mean</span><span class="p">)</span>    <span class="c1">#it is good to add some description to the output, so we know what is what</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>   Mean:  <span class="m">32</span>.5
+</code></pre></div>
+<h3 id="boolean-indexing">Boolean Indexing</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Ages&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">120</span><span class="p">])</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Birth Year</th>
+      <th>Current Year</th>
+      <th>Ages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.7</td>
+      <td>1769</td>
+      <td>2020</td>
+      <td>251</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Ages&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">120</span><span class="p">])</span>
+</code></pre></div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Birth Year</th>
+      <th>Current Year</th>
+      <th>Ages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.5</td>
+      <td>1985</td>
+      <td>2020</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.2</td>
+      <td>1990</td>
+      <td>2020</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
